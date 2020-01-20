@@ -313,7 +313,7 @@ int main(int argc, char **argv) {
     for (int c = 0; c < nclust; c++) {
         for (int n = 0; n < clu[c].npoints; n++) {
             for (int j = 0; j < nobjs; j++) {
-                printf("%g ", clu[c].datitem[n][j] + clu[c].shift[j]);
+                printf("%g,", clu[c].datitem[n][j] + clu[c].shift[j]);
                 // fprintf(stderr, "c=%d shift=%g ", c, clu[c].shift[j]);
             }
             //  fprintf(stderr, "\n");

@@ -110,7 +110,8 @@ int main(int argc, char **argv) {
 
 
     char name[50];
-    sprintf(name, "cure-t%d-%dn-%dD.dat", type, npoints, dim);
+    int seed2 = seed;
+    sprintf(name, "out/cure/cure-t%d-%dn-%dD-%dS.csv", type, npoints, dim,seed2);
     cerr << "Data written to " << name << endl;
     out = new ofstream(name);
     int num_small;
@@ -173,7 +174,7 @@ void gen_data0() {
                 val = points[j * dim + k];
             }
 
-            *out << val << " ";
+            *out << val << ",";
         }
         *out << label << endl;
     }
@@ -193,7 +194,7 @@ void gen_data0() {
                 val = scale(points[j * dim + k], xmin, xmax, half + quad, half + 2 * quad);
             }
 
-            *out << val << " ";
+            *out << val << ",";
         }
         *out << label << endl;
     }
@@ -210,7 +211,7 @@ void gen_data0() {
                 val = scale(points[j * dim + k], xmin, xmax, half - 2 * quad, half - quad);
             }
 
-            *out << val << " ";
+            *out << val << ",";
         }
         *out << label << endl;
     }
@@ -232,7 +233,7 @@ void gen_data1(int num_small, int num_ellipse, int num_out) {
     for (int j = 0; j < num_big; j++) {
         for (int k = 0; k < dim; k++) {
             val = scale(points[j * dim + k], xmin, xmax, xmin, b_max);
-            *out << val << " ";
+            *out << val << ",";
         }
         *out << label << endl;
     }
@@ -251,7 +252,7 @@ void gen_data1(int num_small, int num_ellipse, int num_out) {
                 val = scale(points[j * dim + k], xmin, xmax, half + quad, half + 2 * quad);
             }
 
-            *out << val << " ";
+            *out << val << ",";
         }
         *out << label << endl;
     }
@@ -268,7 +269,7 @@ void gen_data1(int num_small, int num_ellipse, int num_out) {
                 val = scale(points[j * dim + k], xmin, xmax, half - 2 * quad, half - quad);
             }
 
-            *out << val << " ";
+            *out << val << ",";
         }
         *out << label << endl;
     }
@@ -288,7 +289,7 @@ void gen_data1(int num_small, int num_ellipse, int num_out) {
                 val = scale(points[j * dim + k], xmin, xmax, xmax - e_max, xmax);
             }
 
-            *out << val << " ";
+            *out << val << ",";
         }
         *out << label << endl;
     }
@@ -305,7 +306,7 @@ void gen_data1(int num_small, int num_ellipse, int num_out) {
                 val = scale(points[j * dim + k], xmin, xmax, xmax - e_max, xmax);
             }
 
-            *out << val << " ";
+            *out << val << ",";
         }
         *out << label << endl;
     }
@@ -323,7 +324,7 @@ void gen_data1(int num_small, int num_ellipse, int num_out) {
             } else {
                 val = xmax - e_max / 2;
             }
-            *out << val << " ";
+            *out << val << ",";
         }
         *out << label << endl;
     }
@@ -373,7 +374,7 @@ void gen_data2(int num_noise) {
         }else{
             //create outlier
             for (int k = 0; k < dim; k++) {
-                *out << vec[k] << " ";
+                *out << vec[k] << ",";
             }
             *out << label << endl;
             i++;

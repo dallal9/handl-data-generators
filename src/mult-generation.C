@@ -30,8 +30,8 @@ using namespace std;
 #include <cmath>
 
 
-#define DIM 2        // dimensionality of the data
-#define NUM 2      // number of clusters
+#define DIM 4        // dimensionality of the data
+#define NUM 40      // number of clusters
 
 #define MAXMU 10    // mean in each dimension is in range [0,MAXMU]
 #define MINMU -10

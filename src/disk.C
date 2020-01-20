@@ -86,7 +86,8 @@ int main(int argc, char **argv) {
 
 
     char name[50];
-    sprintf(name, "disk-t%d-%dn.dat", type, npoints);
+    int seed2 = seed;
+    sprintf(name, "out/disk/disk-t%d-%dn-%ds.csv", type, npoints,seed2);
     cerr << "Data written to " << name << endl;
     out = new ofstream(name);
     int num_inner;
@@ -124,7 +125,7 @@ void gen_data0(int num_inner, int num_outer, double r, double gap) {
   for (int j = 0; j < num_outer; j++) {
     for (int k = 0; k < dim; k++) {
       val = scale(points[j * dim + k], -1.0, 1.0, xmin, xmax);
-      *out << val << " ";
+      *out << val << ",";
     }
     *out << label << endl;
   }
@@ -135,7 +136,7 @@ void gen_data0(int num_inner, int num_outer, double r, double gap) {
   for (int j = 0; j < num_inner; j++) {
     for (int k = 0; k < dim; k++) {
       val = scale(points[j * dim + k], -1.0, 1.0, min, max);
-      *out << val << " ";
+      *out << val << ",";
     }
     *out << label << endl;
   }
