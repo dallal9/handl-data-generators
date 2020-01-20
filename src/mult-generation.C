@@ -31,7 +31,7 @@ using namespace std;
 
 
 #define DIM 2        // dimensionality of the data
-#define NUM 40      // number of clusters
+#define NUM 2      // number of clusters
 
 #define MAXMU 10    // mean in each dimension is in range [0,MAXMU]
 #define MINMU -10
@@ -40,7 +40,7 @@ using namespace std;
 // of row sum in each dimension is in range [0,MAXSIGMA]
 #define MAXSIZE 100  // size of each cluster is in range [MINSIZE,MAXSIZE]
 #define MINSIZE 10
-#define RUNS 10      // number of data sets to be generated
+#define RUNS 3      // number of data sets to be generated
 
 
 double mean[DIM];
@@ -70,7 +70,7 @@ int main(int argc, char ** argv) {
 
     for (int j = 0; j < RUNS; j++) {
         char name[50];
-        sprintf(name, "%dd-%dc-no%d.dat", DIM, NUM, j);
+        sprintf(name, "out/mult/%dd-%dc-no%d.csv", DIM, NUM, j);
         cerr << "Data written to " << name << endl;
         out = new ofstream(name);
         generate_config();
@@ -173,7 +173,7 @@ void generate_config() {
         // Print data to file
         for (int j = 0; j < size[i]; j++) {
             for (int k = 0; k < DIM; k++) {
-                *out << points[j * DIM + k] << " ";
+                *out << points[j * DIM + k] << ",";
             }
             *out << i << endl;
         }
